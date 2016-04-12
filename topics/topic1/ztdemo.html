@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+
+      .fakeBing{
+        width: 100%;
+        position: relative;
+      }
+
+      .box{
+        width: 37px;
+        height: 37px;
+        background: black;
+        opacity: 0.5;
+        border: 1px solid #fff;
+      }
+
+      .box1{
+        position: absolute;
+        left:24%;
+        top:18%;
+      }
+
+      .box2{
+        position: absolute;
+        left: 34%;
+        top: 25%;
+      }
+
+      .box3{
+        position: absolute;
+        left: 63%;
+        top: 22%;
+      }
+
+      .clickOne{
+        transition: opacity 800ms ease 0s;
+      }
+
+
+      .box4{
+        position: absolute;
+        left: 87%;
+        top: 27%;
+      }
+
+      .content{
+        color: #fff;
+        text-decoration: none;
+        position: absolute;
+        display: block;
+        cursor: pointer;
+        z-index: 6;
+        border:1px solid #FFF;
+        line-height: 1.4em;
+        width: 205px;
+        padding: 3px 8px 6px;
+        word-wrap: break-word;
+        position: relative;
+        left: 37px;
+        background: black;
+        opacity: 0.5;
+      }
+
+    </style>
+
+
+
+  </head>
+  <body>
+    <div class="fakeBing">
+      <img src="1.jpg" alt="" />
+        <div class="box box1" id="t1">
+          <a href="#">
+            <div class="content">
+                <p>
+                  test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1
+                </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="box box2">
+          <div class="content">
+            <p>
+              222222222222222222222222222222222222222222222222222222222222222222222222222222
+            </p>
+          </div>
+        </div>
+
+        <div class="box box3">
+          <div class="content">
+            <p>
+              33333333333333333333333333333333333333333333333333333333333333333333333333333
+            </p>
+          </div>
+        </div>
+
+        <div class="clikcFour box box4">
+          <div class="content">
+            <p>
+              4444444444444444444444444444444444444444444444444444444444444444444444444444444
+            </p>
+          </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    function $(id){
+        return ("string" === typeof id) ? document.getElementById('id') : id;
+    }
+
+    //addClass removeClass
+    function hasClass(obj, cls) {
+        // if (obj!==null) {
+          return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+        // }
+        // if (obj===null) {
+        //  console.log(obj + " obj is not exist");
+        //  return null;
+        // }
+
+      }
+
+      function addClass(obj, cls) {
+          if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+          // return console.log(obj + "is not exist");
+      }
+
+      function removeClass(obj, cls) {
+          if (hasClass(obj, cls)) {
+              var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+              obj.className = obj.className.replace(reg, ' ');
+          }
+      }
+
+    (function(){
+      var box1=$(t1);
+      addClass(box1,"clickOne");
+
+
+      // box.addEventListener('click',function(){
+      //   this.setAttribute("class","clickThree");
+      // })
+    })();
+    </script>
+
+
+  </body>
+</html>
