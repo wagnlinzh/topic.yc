@@ -117,23 +117,20 @@
 
 
 
-
+ var timer;
   function displayAndDismiss(){
     var box = $('.box');
     $(box).fadeIn(300);
-
-    setTimeout(function(e) {
-      $(".box").fadeOut(300);
+    clearTimeout(timer);
+    var timer = setTimeout(function(e) {
+      $(box).fadeOut(300);
       console.log(12);
      }, 1000);
 
 
-     setTimeout(function(){
-       $(box).fadeOut(1000);
-     },1000);
-
      console.log(1111);
-     $(this).off("mousemove");//解绑
+     console.log($(this));
+    //  $(this).off("mousemove");//解绑
   };
 
 
