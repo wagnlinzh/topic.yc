@@ -1,141 +1,197 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen">
+  * {
+    padding: 0px;
+    margin: 0px;
+  }
 
-    <style media="screen">
+  .fakeBing {
+    width: 100%;
+    position: relative;
+  }
 
-    *{
-      padding:0px;
-      margin:0px;
-    }
+  .boxContainer1 {
+    position: absolute;
+    left: 24%;
+    top: 18%;
+  }
 
-    .fakeBing{
-        width: 100%;
-        position: relative;
-    }
+  .boxContainer2 {
+    position: absolute;
+    left: 35%;
+    top: 16%;
+  }
 
+  .boxContainer3 {
+    position: absolute;
+    left: 63%;
+    top: 22%;
+  }
 
-      .box{
-        width: 37px;
-        height: 37px;
-        background: black;
-        opacity: 0.5;
-        border: 1px solid #fff;
-        position: relative;
-        left:1px;
-        top:1px;
+  .boxContainer4 {
+    position: absolute;
+    left: 87%;
+    top: 27%;
+  }
 
-      }
+  .box {
+    width: 37px;
+    height: 37px;
+    background: black;
+    opacity: 0.5;
+    border: 1px solid #fff;
+    position: absolute;
+    ;
+    left: 1px;
+    top: 1px;
+    /*display: none;*/
+  }
 
-
-
-      .box2{
-        position: absolute;
-        left: 34%;
-        top: 25%;
-      }
-
-      .box3{
-        position: absolute;
-        left: 63%;
-        top: 22%;
-      }
-
-      .clickOne{
-        transition: opacity 800ms ease 0s;
-      }
-
-
-      .box4{
-        position: absolute;
-        left: 87%;
-        top: 27%;
-      }
-
-
-      .content{
-        color: #fff;
-        text-decoration: none;
-        position: absolute;
-        cursor: pointer;
-        z-index: 6;
-        border:1px solid #FFF;
-        line-height: 1.4em;
-        width: 205px;
-        padding: 3px 8px 6px;
-        word-wrap: break-word;
-        position: relative;
-        left: 37px;
-        top:0px;
-        background: black;
-        opacity: 0.5;
-        display: none;
-      }
+  .content {
+    color: #fff;
+    text-decoration: none;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
+    border: 1px solid #FFF;
+    line-height: 1.4em;
+    width: 205px;
+    padding: 3px 8px 6px 0px;
+    word-wrap: break-word;
+    position: absolute;
+    left: 40px;
+    top: 0px;
+    background: black;
+    opacity: 0.7;
+    display: none;
+  }
+  </style>
 
 
 
-      .boxContainer{
-        position: absolute;
-        left:24%;
-        top:18%;
-      }
-    </style>
+</head>
+<body>
+  <div class="fakeBing">
+    <img src="1.jpg" alt="" />
 
-
-
-  </head>
-  <body>
-    <div class="fakeBing">
-      <img src="1.jpg" alt="" />
-
-      <div class="boxContainer">
-        <div class="box box1" id="t1"></div>
-        <div class="content">
-            test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1
-        </div>
+    <div class="boxContainer1">
+      <div class="box"></div>
+      <div class="content">
+        test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1
       </div>
-
-
-
-
-        <div class="box box2">
-          <div class="content">
-            <p>
-              222222222222222222222222222222222222222222222222222222222222222222222222222222
-            </p>
-          </div>
-        </div>
-
-        <div class="box box3">
-          <div class="content">
-            <p>
-              33333333333333333333333333333333333333333333333333333333333333333333333333333
-            </p>
-          </div>
-        </div>
-
-        <div class="clikcFour box box4">
-          <div class="content">
-            <p>
-              4444444444444444444444444444444444444444444444444444444444444444444444444444444
-            </p>
-          </div>
-        </div>
     </div>
 
-    <script src="jquery.js"></script>
-    <script type="text/javascript">
-
-      $(".box1").on("mouseenter",function(){
-        console.log($(this));
-        console.log($(this).parent('.boxContainer'));
-        console.log($(this).parent('.boxContainer').find(".content"));
-        $(this).parent('.boxContainer').find(".content").show();
-      })
-    </script>
 
 
-  </body>
+    <div class="boxContainer2">
+      <div class="box"></div>
+      <div class="content">
+        222222222222222222222222222222222222222222222222222222222222222222222222222222
+      </div>
+    </div>
+
+    <div class="boxContainer3">
+      <div class="box"></div>
+      <div class="content">
+        33333333333333333333333333333333333333333333333333333333333333333333333333333
+      </div>
+    </div>
+
+    <div class="boxContainer4">
+      <div class="box"></div>
+      <div class="content">
+        4444444444444444444444444444444444444444444444444444444444444444444444444444444
+      </div>
+    </div>
+
+  </div>
+
+  <script src="jquery.js">
+  </script>
+
+  <script type="text/javascript">
+
+
+
+
+  function displayAndDismiss(){
+    var box = $('.box');
+    $(box).fadeIn(300);
+
+    setTimeout(function(e) {
+      $(".box").fadeOut(300);
+      console.log(12);
+     }, 1000);
+
+
+     setTimeout(function(){
+       $(box).fadeOut(1000);
+     },1000);
+
+     console.log(1111);
+     $(this).off("mousemove");//解绑
+  };
+
+
+  // 最开始页面DOM加载完成,box出现一下,再消失
+  $(function() {
+    $(".box").fadeOut(500);
+    // return false;
+  });
+
+
+  $(".box").on("mouseleave", function() {
+    // console.log($(this));
+    // console.log($(this).parent());
+    // console.log($(this).parent().find(".content"));
+    $(this).parent().find(".content").fadeOut(1000);
+    console.log("闪瞎我的眼睛的是你吗?mouseleave");
+
+    return false;
+
+  });
+
+
+  //当鼠标移动的时候,显示几个box,监听整个窗口事件
+  $(document).on("mousemove", displayAndDismiss);
+
+
+
+  // 这段代码的作用完成 当鼠标悬浮到box上的时候,显示content;当鼠标移出的时候,隐藏content
+
+  $(".box").on("mouseenter", function() {
+    // console.log($(this));
+    // console.log($(this).parent());
+    // console.log($(this).parent('.boxContainer').find(".content"));
+    $(this).parent().find(".content").fadeIn(100);
+    console.log("闪瞎我的眼睛的是你吗?mouseenter");
+
+    return false;
+
+  });
+
+
+
+
+  // todo:  当鼠标移动一定距离之后,box显示,再移动一定距离之后,消失
+
+  /*
+
+  1.刷新页面的时候 ,在页面加载完成的时候显示一下,,然后消失,
+
+  2. 之后消失
+
+  3. 在之后移动鼠标 ->box出现. 当鼠标停止,box消失
+
+  4.当鼠标移动到其中一个的时候, 显示content内容. 并且其他box的消失.
+  */
+
+
+  // 开始的时候是消失的,然后移动鼠标就显示.
+  </script>
+</body>
 </html>

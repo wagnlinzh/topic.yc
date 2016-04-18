@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style media="screen">
+
+        *{
+          padding:0px;
+          margin:0px;
+        }
+
+        .fakeBing{
+          background: url("./1.jpg") no-repeat left top;
+          background-size: 100% 100%;
+          height: 1000px;
+          position: relative;
+        }
+
+        .boxContainer1{
+          position: absolute;
+          left:24%;
+          top:18%;
+        }
+
+        .boxContainer2{
+          position: absolute;
+          left:35%;
+          top:16%;
+        }
+
+        .boxContainer3{
+          position: absolute;
+          left: 63%;
+          top: 22%;
+        }
+
+        .boxContainer4{
+          position: absolute;
+          left: 87%;
+          top: 27%;
+        }
+
+        .box{
+          width: 37px;
+          height: 37px;
+          background: black;
+          opacity: 0.1;
+          border: 1px solid #fff;
+          position: absolute;;
+          left:1px;
+          top:1px;
+
+        }
+
+        .content{
+          color: #fff;
+          text-decoration: none;
+          position: absolute;
+          cursor: pointer;
+          z-index: 1;
+          border:1px solid #FFF;
+          line-height: 1.4em;
+          width: 205px;
+          padding: 3px 8px 6px 0px;
+          word-wrap: break-word;
+          position:absolute;
+          left: 40px;
+          top:0px;
+          background: black;
+          opacity: 0.4;
+          display: none;
+        }
+
+
+        .box:hover{
+          opacity: 0.7;
+          transition: opacity 800ms;
+        }
+
+        a:hover{
+          opacity: 0.6;
+          transition: opcity 800ms;
+        }
+
+    </style>
+
+
+
+  </head>
+  <body>
+    <div class="fakeBing">
+
+
+      <div class="boxContainer1">
+        <div class="box">
+          <a href="javascript::void(0)">
+            <div class="content">
+                test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+
+
+      <div class="boxContainer2">
+        <div class="box">
+          <div class="content">
+              222222222222222222222222222222222222222222222222222222222222222222222222222222
+          </div>
+        </div>
+      </div>
+
+      <div class="boxContainer3">
+        <div class="box">
+          <div class="content">
+              33333333333333333333333333333333333333333333333333333333333333333333333333333
+          </div>
+        </div>
+      </div>
+
+      <div class="boxContainer4">
+        <div class="box">
+          <div class="content">
+              4444444444444444444444444444444444444444444444444444444444444444444444444444444
+          </div>
+        </div>
+    </div>
+
+   </div>
+
+
+    <script type="text/javascript">
+
+    // 这段代码的作用完成 当鼠标悬浮到box上的时候,显示content;当鼠标移出的时候,隐藏content
+
+
+      // $(".box").on("mouseenter",function(){
+      //   console.log($(this));
+      //   console.log($(this).parent());
+      //   console.log($(this).parent('.boxContainer').find(".content"));
+      //   $(this).parent().find(".content").fadeIn(100);
+      // });
+      //
+      // $(".box").on("mouseleave",function(){
+      //   console.log($(this));
+      //   console.log($(this).parent());
+      //   console.log($(this).parent().find(".content"));
+      //   $(this).parent().find(".content").fadeOut(200);
+      // });
+
+
+      // todo:  当鼠标移动一定距离之后,box显示,再移动一定距离之后,消失
+      /*
+      1.刷新页面的时候 ,在页面加载完成的时候显示一下,,然后消失,
+
+      2. 之后消失
+
+      3. 在之后移动鼠标 ->出现. 当鼠标停止,消失
+
+      4.当鼠标移动到其中一个的时候, 显示content内容. 并且其他的消失.
+
+
+      */
+      // 开始的时候是消失的,然后移动鼠标就显示.
+      //
+
+
+
+    </script>
+  </body>
+</html>
