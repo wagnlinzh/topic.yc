@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+    $(function () {
+      $("#green").click(function (event) {
+          // 这行代码可以解决你的问题
+          event.stopImmediatePropagation();
+          alert("green click1");
+      });
+
+      $("#green").click(function () {
+          alert("green click2");
+      });
+
+    });
+
+    </script>
+    <style media="screen">
+      .green{
+        width: 100px;
+        height: 100px;
+        background: lightpink;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="green" id="green">
+
+    </div>
+
+  </body>
+</html>

@@ -10,32 +10,58 @@
   }
 
   .fakeBing {
-    width: 100%;
-    position: relative;
+    background:  url("1.jpg") no-repeat top left;
+    background-size: 100% 100%;
+    height:1600px;
+    width: 2560px;
   }
 
   .boxContainer1 {
     position: absolute;
     left: 24%;
     top: 18%;
+
+    /*temp*/
+    width: 100px;
+    height: 100px;
+    background:rgba(255, 193, 7, 0.45);
+    z-index: 3;
   }
 
   .boxContainer2 {
     position: absolute;
     left: 35%;
     top: 16%;
+
+    /*temp*/
+    width: 37px;
+    height: 37px;
+    /*background: black;*/
+    z-index: 3;
   }
 
   .boxContainer3 {
     position: absolute;
     left: 63%;
     top: 22%;
+
+    /*temp*/
+    width: 37px;
+    height: 37px;
+    /*background: black;*/
+    z-index: 3;
   }
 
   .boxContainer4 {
     position: absolute;
     left: 87%;
     top: 27%;
+
+    /*temp*/
+    width: 37px;
+    height: 37px;
+    /*background: black;*/
+    z-index: 3;
   }
 
   .box {
@@ -45,9 +71,9 @@
     opacity: 0.5;
     border: 1px solid #fff;
     position: absolute;
-    ;
     left: 1px;
     top: 1px;
+    z-index: 5;
     /*display: none;*/
   }
 
@@ -60,6 +86,7 @@
     border: 1px solid #FFF;
     line-height: 1.4em;
     width: 205px;
+    height: 100px;
     padding: 3px 8px 6px 0px;
     word-wrap: break-word;
     position: absolute;
@@ -69,17 +96,15 @@
     opacity: 0.7;
     display: none;
   }
+
   </style>
-
-
 
 </head>
 <body>
   <div class="fakeBing">
-    <img src="1.jpg" alt="" />
 
     <div class="boxContainer1">
-      <div class="box"></div>
+      <div class="box box1"></div>
       <div class="content">
         test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1
       </div>
@@ -88,21 +113,21 @@
 
 
     <div class="boxContainer2">
-      <div class="box"></div>
+      <div class="box box2"></div>
       <div class="content">
         222222222222222222222222222222222222222222222222222222222222222222222222222222
       </div>
     </div>
 
     <div class="boxContainer3">
-      <div class="box"></div>
+      <div class="box box3"></div>
       <div class="content">
         33333333333333333333333333333333333333333333333333333333333333333333333333333
       </div>
     </div>
 
     <div class="boxContainer4">
-      <div class="box"></div>
+      <div class="box box4"></div>
       <div class="content">
         4444444444444444444444444444444444444444444444444444444444444444444444444444444
       </div>
@@ -115,38 +140,60 @@
 
   <script type="text/javascript">
 
-
-
- // var timer;
- //  function displayAndDismiss(){
- //    var box = $('.box');
- //    $(box).fadeIn(300);
- //    clearTimeout(timer);
- //    // var timer = setTimeout(function(e) {
- //    //   $(box).fadeOut(300);
- //    //   console.log(12);
- //    //  }, 1000);
- //
- //
- //     console.log(1111);
- //     console.log($(this));
- //    //  $(this).off("mousemove");//解绑
- //  };
-
-
   // 最开始页面DOM加载完成,box出现一下,再消失
   $(function() {
-    $(".box").fadeOut(500);
-    // return false;
+    // $(".box").stop().fadeOut(500);
+    var timer1,timer2,timer3,timer4;
+
+    clearTimeout(timer1);
+    var timer1 = setTimeout(function(e) {
+      $('.box1').stop().fadeOut(500);
+
+    }, 500);
+
+    clearTimeout(timer2);
+    var timer2 = setTimeout(function(e) {
+      $('.box2').stop().fadeOut(800);
+
+    }, 700);
+
+    clearTimeout(timer3);
+    var timer3 = setTimeout(function(e) {
+      $('.box3').stop().fadeOut(800);
+
+    }, 300);
+
+    clearTimeout(timer4);
+    var timer4 = setTimeout(function(e) {
+      $('.box4').stop().fadeOut(800);
+    }, 100);
+    return false;
   });
 
+  // 这段代码的作用完成 当鼠标悬浮到box上的时候,显示content;当鼠标移出的时候,隐藏content
 
+  $(".box").on("mouseenter", function(e) {
+
+    // console.log("闪瞎我的眼睛的是你吗?mouseenter");
+
+    // console.log($(this));
+    // console.log($(this).parent());
+    // console.log($(this).parent('.boxContainer').find(".content"));
+    console.log("mouseenter 被有效触发 (^_^)");
+    $(this).parent().find(".content").finish().fadeIn(300);
+
+  });
+
+  //当鼠标离开box的时候,content消失
   $(".box").on("mouseleave", function() {
     // console.log($(this));
     // console.log($(this).parent());
     // console.log($(this).parent().find(".content"));
-    $(this).parent().find(".content").fadeOut(1000);
-    console.log("闪瞎我的眼睛的是你吗?mouseleave");
+
+    console.log("mouseleave 被触发 :)");
+
+    $(this).parent().find(".content").finish().fadeOut(500);
+    // console.log("闪瞎我的眼睛的是你吗?mouseleave");
 
     return false;
 
@@ -154,48 +201,157 @@
 
 
   //当鼠标移动的时候,显示几个box,监听整个窗口事件
-  var timer2;
-  var pageX=0,pageY=0;
+  var timer1,timer2,timer3,timer4;
+  var pageX=0,pageY=0;//鼠标初始化位置
 
   $("body").on("mousemove", function(e){
-    if (Math.abs(e.pageX-pageX) >10 || Math.abs(e.pageY-pageY)>10) {
-      var box = $('.box');
-      $(box).fadeIn(300);
 
-      clearTimeout(timer2);
-      var timer2 = setTimeout(function(e) {
-        $(box).fadeOut(300);
-        console.log(12);
-       }, 1000);
-      //  console.log($(this));
-      // $(this).off("mousemove");//解绑
-      console.log('testste');
 
-      pageX=e.pageX;
-      pageY=e.pageY;
-      console.log(pageX+","+pageY);
-    };
+    var widthBody=$(window).width(),
+    heightBody=$(window).height();//获取到窗体的宽高
+
+    // console.log($(window).width());
+
+    var width1,width2,width4,width4,height1,height2,height3,height4;
+
+    width1=widthBody*0.24;
+    height1=heightBody*0.18;
+
+    width2=widthBody*0.35;
+    height2=heightBody*0.16;
+
+    width3=widthBody*0.63;
+    height3=heightBody*0.22;
+
+    width4=widthBody*0.87;
+    height4=heightBody*0.27;
+
+
+
+
+    //设置条件,只要在鼠标不在这个区域内时才会触发这个事件
+    //box1
+    if(!(((e.pageX>(width1)) && (e.pageX<(width1+242))) &&((e.pageY>(height1))&&(e.pageY<(height1+100))) ) ){
+      if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
+
+        // var box = $('.box');
+        $('.box').stop().fadeIn(300);
+
+        // 过一定时间未移动鼠标就消失
+        clearTimeout(timer1);
+        var timer1 = setTimeout(function(e) {
+          $('.box1').stop().fadeOut(500);
+        }, 500);
+
+        clearTimeout(timer2);
+        var timer2 = setTimeout(function(e) {
+          $('.box2').stop().fadeOut(800);
+        }, 800);
+
+        clearTimeout(timer3);
+        var timer3 = setTimeout(function(e) {
+          $('.box3').stop().fadeOut(800);
+
+        }, 700);
+
+        clearTimeout(timer4);
+        var timer4 = setTimeout(function(e) {
+          $('.box4').stop().fadeOut(500);
+        }, 500);
+
+
+        pageX=e.pageX;
+        pageY=e.pageY;
+      }
+
+    }else {
+      console.log("move2无作用区,使box1显示....\n"
+      +"(^_^)");
+      $(this).find(".box1").show();
+    }//if -else -end box1
+
+
+    //box2
+    if( !(((e.pageX>(width2)) && (e.pageX<(width2+242))) &&((e.pageY>(height2))&&(e.pageY<(height2+137))))){
+      if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
+
+        var box = $('.box');
+        $(box).finish();
+        $(box).stop().fadeIn(800);
+
+        // 过2s未移动鼠标就消失
+        clearTimeout(timer2);
+        var timer2 = setTimeout(function(e) {
+          $('.box2').stop().fadeOut(800);
+        }, 1000);
+
+        pageX=e.pageX;
+        pageY=e.pageY;
+      }
+
+    }else {
+      console.log("move2 无作用区,使box2显示....\n"
+      +"(^_^)");
+      $(this).find(".box2").stop().fadeIn(800);
+    }//if -else -ene box2
+
+
+    //box3
+    if(!(((e.pageX>(width3)) && (e.pageX<(width3+37)))&&((e.pageY>(height3))&&(e.pageY<(height3+37))))){
+      if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
+
+        var box = $('.box3');
+        $(box).finish();
+        $(box).stop().fadeIn(800);
+
+        // 过2s未移动鼠标就消失
+        clearTimeout(timer3);
+        var timer3 = setTimeout(function(e) {
+          $(box).stop().fadeOut(800);
+
+        }, 100);
+
+        pageX=e.pageX;
+        pageY=e.pageY;
+      }
+
+    }else {
+      console.log("move2 无作用区,使box3显示....\n"
+      +"(^_^)");
+      $(this).find(".box3").stop().fadeIn(300);
+    }//if -else -end box3
+
+    //box4
+    if(!(((e.pageX>(width4)) && (e.pageX<(width4+37))) &&((e.pageY>(height4))&&(e.pageY<(height4+37))))){
+      if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
+
+        var box = $('.box4');
+        $(box).finish();
+        $(box).stop().fadeIn(800);
+
+        // 过2s未移动鼠标就消失
+        clearTimeout(timer4);
+        var timer4 = setTimeout(function(e) {
+          $(box).stop().fadeOut(800);
+
+        }, 3000);
+
+        pageX=e.pageX;
+        pageY=e.pageY;
+      }
+
+    }else {
+      console.log("move2 无作用区,使box4显示....\n"
+      +"(^_^)");
+      $(this).find(".box4").stop().fadeIn(800);
+    }//if -else -end box4
 
   });
 
 
 
-  // 这段代码的作用完成 当鼠标悬浮到box上的时候,显示content;当鼠标移出的时候,隐藏content
 
-  $(".box").on("mouseenter", function(e) {
-    e.stopPropagation();
-    // console.log($(this));
-    // console.log($(this).parent());
-    // console.log($(this).parent('.boxContainer').find(".content"));
-    $(this).parent().find(".content").fadeIn(300);
-    console.log("闪瞎我的眼睛的是你吗?mouseenter");
 
-  });
-
-  $('.box').on('mousemove hover', function (e) {
-    e.stopPropagation();
-    $(this).parent().find(".content").show();
-  });
 
 
 
