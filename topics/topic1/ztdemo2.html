@@ -104,7 +104,7 @@
   <div class="fakeBing">
 
     <div class="boxContainer1">
-      <div class="box"></div>
+      <div class="box box1"></div>
       <div class="content">
         test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1
       </div>
@@ -113,21 +113,21 @@
 
 
     <div class="boxContainer2">
-      <div class="box"></div>
+      <div class="box box2"></div>
       <div class="content">
         222222222222222222222222222222222222222222222222222222222222222222222222222222
       </div>
     </div>
 
     <div class="boxContainer3">
-      <div class="box"></div>
+      <div class="box box3"></div>
       <div class="content">
         33333333333333333333333333333333333333333333333333333333333333333333333333333
       </div>
     </div>
 
     <div class="boxContainer4">
-      <div class="box"></div>
+      <div class="box box4"></div>
       <div class="content">
         4444444444444444444444444444444444444444444444444444444444444444444444444444444
       </div>
@@ -142,7 +142,31 @@
 
   // 最开始页面DOM加载完成,box出现一下,再消失
   $(function() {
-    $(".box").fadeOut(500);
+    // $(".box").stop().fadeOut(500);
+    var timer1,timer2,timer3,timer4;
+
+    clearTimeout(timer1);
+    var timer1 = setTimeout(function(e) {
+      $('.box1').stop().fadeOut(500);
+
+    }, 500);
+
+    clearTimeout(timer2);
+    var timer2 = setTimeout(function(e) {
+      $('.box2').stop().fadeOut(800);
+
+    }, 700);
+
+    clearTimeout(timer3);
+    var timer3 = setTimeout(function(e) {
+      $('.box3').stop().fadeOut(800);
+
+    }, 300);
+
+    clearTimeout(timer4);
+    var timer4 = setTimeout(function(e) {
+      $('.box4').stop().fadeOut(800);
+    }, 100);
     return false;
   });
 
@@ -155,7 +179,8 @@
     // console.log($(this));
     // console.log($(this).parent());
     // console.log($(this).parent('.boxContainer').find(".content"));
-    $(this).parent().find(".content").stop().fadeIn(300);
+    console.log("mouseenter 被有效触发 (^_^)");
+    $(this).parent().find(".content").finish().fadeIn(300);
 
   });
 
@@ -165,7 +190,9 @@
     // console.log($(this).parent());
     // console.log($(this).parent().find(".content"));
 
-    $(this).parent().find(".content").stop().fadeOut(1000);
+    console.log("mouseleave 被触发 :)");
+
+    $(this).parent().find(".content").finish().fadeOut(500);
     // console.log("闪瞎我的眼睛的是你吗?mouseleave");
 
     return false;
@@ -174,14 +201,14 @@
 
 
   //当鼠标移动的时候,显示几个box,监听整个窗口事件
-  var timer2;
-  var pageX=0,pageY=0;
+  var timer1,timer2,timer3,timer4;
+  var pageX=0,pageY=0;//鼠标初始化位置
 
   $("body").on("mousemove", function(e){
 
 
     var widthBody=$(window).width(),
-        heightBody=$(window).height();//获取到窗体的宽高
+    heightBody=$(window).height();//获取到窗体的宽高
 
     // console.log($(window).width());
 
@@ -202,47 +229,122 @@
 
 
 
+    //设置条件,只要在鼠标不在这个区域内时才会触发这个事件
+    //box1
+    if(!(((e.pageX>(width1)) && (e.pageX<(width1+242))) &&((e.pageY>(height1))&&(e.pageY<(height1+100))) ) ){
+      if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
 
-        if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
-          //设置条件,只要在鼠标不在这个区域内时才会触发这个事件
-          if(
-            !(
-              ((e.pageX>(width1)) && (e.pageX<(width1+100)))
-              &&((e.pageY>(height1))&&(e.pageY<(height1+100)))
-            ||
-              ((e.pageX>(width2)) && (e.pageX<(width2+37)))
-              &&((e.pageY>(height2))&&(e.pageY<(height2+37)))
-            ||
-              ((e.pageX>(width3)) && (e.pageX<(width3+37)))
-              &&((e.pageY>(height3))&&(e.pageY<(height3+37)))
-            ||
-              ((e.pageX>(width4)) && (e.pageX<(width4+37)))
-              &&((e.pageY>(height4))&&(e.pageY<(height4+37)))
-            )
-        ){
+        // var box = $('.box');
+        $('.box').stop().fadeIn(300);
 
-              console.log("pageX1 ="+e.pageX+","+"width1 ="+width1);
-              var box = $('.box');
-              $(box).finish();
-              $(box).stop().fadeIn(800);
+        // 过一定时间未移动鼠标就消失
+        clearTimeout(timer1);
+        var timer1 = setTimeout(function(e) {
+          $('.box1').stop().fadeOut(500);
+        }, 500);
 
-              // 过2s未移动鼠标就消失
-              clearTimeout(timer2);
-              var timer2 = setTimeout(function(e) {
-                $(box).stop().fadeOut(800);
-                console.log(12);
-              }, 2000);
+        clearTimeout(timer2);
+        var timer2 = setTimeout(function(e) {
+          $('.box2').stop().fadeOut(800);
+        }, 800);
 
-              pageX=e.pageX;
-              pageY=e.pageY;
-            }
-          // }else {
-          //   console.log("move2在不该被触发的范围之内触发了....\n"
-          //                +"(-________________________-)");
-          // }//if -else -end
+        clearTimeout(timer3);
+        var timer3 = setTimeout(function(e) {
+          $('.box3').stop().fadeOut(800);
 
-        }//if-end
+        }, 700);
 
+        clearTimeout(timer4);
+        var timer4 = setTimeout(function(e) {
+          $('.box4').stop().fadeOut(500);
+        }, 500);
+
+
+        pageX=e.pageX;
+        pageY=e.pageY;
+      }
+
+    }else {
+      console.log("move2无作用区,使box1显示....\n"
+      +"(^_^)");
+      $(this).find(".box1").show();
+    }//if -else -end box1
+
+
+    //box2
+    if( !(((e.pageX>(width2)) && (e.pageX<(width2+242))) &&((e.pageY>(height2))&&(e.pageY<(height2+137))))){
+      if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
+
+        var box = $('.box');
+        $(box).finish();
+        $(box).stop().fadeIn(800);
+
+        // 过2s未移动鼠标就消失
+        clearTimeout(timer2);
+        var timer2 = setTimeout(function(e) {
+          $('.box2').stop().fadeOut(800);
+        }, 1000);
+
+        pageX=e.pageX;
+        pageY=e.pageY;
+      }
+
+    }else {
+      console.log("move2 无作用区,使box2显示....\n"
+      +"(^_^)");
+      $(this).find(".box2").stop().fadeIn(800);
+    }//if -else -ene box2
+
+
+    //box3
+    if(!(((e.pageX>(width3)) && (e.pageX<(width3+37)))&&((e.pageY>(height3))&&(e.pageY<(height3+37))))){
+      if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
+
+        var box = $('.box3');
+        $(box).finish();
+        $(box).stop().fadeIn(800);
+
+        // 过2s未移动鼠标就消失
+        clearTimeout(timer3);
+        var timer3 = setTimeout(function(e) {
+          $(box).stop().fadeOut(800);
+
+        }, 100);
+
+        pageX=e.pageX;
+        pageY=e.pageY;
+      }
+
+    }else {
+      console.log("move2 无作用区,使box3显示....\n"
+      +"(^_^)");
+      $(this).find(".box3").stop().fadeIn(300);
+    }//if -else -end box3
+
+    //box4
+    if(!(((e.pageX>(width4)) && (e.pageX<(width4+37))) &&((e.pageY>(height4))&&(e.pageY<(height4+37))))){
+      if (Math.abs(e.pageX-pageX) >100 || Math.abs(e.pageY-pageY)>100) {
+
+        var box = $('.box4');
+        $(box).finish();
+        $(box).stop().fadeIn(800);
+
+        // 过2s未移动鼠标就消失
+        clearTimeout(timer4);
+        var timer4 = setTimeout(function(e) {
+          $(box).stop().fadeOut(800);
+
+        }, 3000);
+
+        pageX=e.pageX;
+        pageY=e.pageY;
+      }
+
+    }else {
+      console.log("move2 无作用区,使box4显示....\n"
+      +"(^_^)");
+      $(this).find(".box4").stop().fadeIn(800);
+    }//if -else -end box4
 
   });
 
